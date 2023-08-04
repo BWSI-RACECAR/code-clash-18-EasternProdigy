@@ -25,39 +25,22 @@ Input: 12:05  Output: It's twelve oh five pm
 """
 
 
-
-
+hours = {1:"one", 2:"two", 3:"three", 4:"four", 5:"five", 6:"six",7:"seven", 8:"eight", 9:"nine", 10:"ten", 11:"eleven", 12:"twelve",0:"twelve"}
+minutes = {1:"oh one",2:"oh two",3:"oh three",4:"oh four",5:"oh five",10:"ten",11:"eleven",13:"thirteen",14:"fourteen",19:"nineteen",20:"twenty",30:"thirty",29:"twenty nine",39:"thirty nine",49:"forty nine",59:"fifty nine"}
     # This will convert military hours to regular hours, and determine AM vs PM
 class Solution:    
     def ClockTalker(self, input_time):
-        
-        num_to_word = {
-            "00": "twelve", "01": "one", "02": "two", "03": "three", "04": "four", "05": "five",
-            "06": "six", "07": "seven", "08": "eight", "09": "nine", "10": "ten",
-            "11": "eleven", "12": "twelve", "13": "one", "14": "two", "15": "three",
-            "16": "four", "17": "five", "18": "six", "19": "seven", "20": "eight",
-            "21": "nine", "22": "ten", "23": "eleven",
-            "30": "thirty", "40": "forty", "50": "fifty",
-        }
-
-        hours, minutes = input_time.split(":")
-        if int(hours) < 12: am_pm = "am"
-        else: am_pm = "pm"
-
-        if hours in num_to_word: hours_in_words = num_to_word[hours]
-        else: hours_in_words = ""
-
-        if minutes in num_to_word: minutes_in_words = num_to_word[minutes]
+        if int(input_time.split(":")[0]) < 12:
+            a = "am"
+            hour = int(input_time.split(":")[0])
         else:
-            if minutes[0] + "0" in num_to_word and minutes[1] in num_to_word:
-                minutes_in_words = num_to_word[minutes[0] + "0"] + " " + num_to_word[minutes[1]]
-            elif minutes[0] + "0" in num_to_word:
-                minutes_in_words = num_to_word[minutes[0] + "0"]
-            elif minutes[1] in num_to_word:
-                minutes_in_words = "oh " + num_to_word[minutes[1]]
-
-        return f"It's {hours_in_words} {minutes_in_words} {am_pm}"
-
+            a = "pm"
+            hour = int(input_time.split(":")[0]) - 12
+        time = ""
+        time += hours[hour]
+        if int(input_time.split(":")[1]) in minutes:
+            time += " " + minutes[int(input_time.split(":")[1])]
+        return "It's " + time + " " + a
 def main():
      str1=input()
      tc1= Solution()
@@ -66,4 +49,3 @@ def main():
     
 if __name__ == '__main__': 
     main()
-        
