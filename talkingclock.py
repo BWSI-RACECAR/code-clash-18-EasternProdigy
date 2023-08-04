@@ -24,10 +24,8 @@ Input: 23:59  Output: It's eleven fifty nine pm
 Input: 12:05  Output: It's twelve oh five pm
 """
 
-
-hours = {1:"one", 2:"two", 3:"three", 4:"four", 5:"five", 6:"six",7:"seven", 8:"eight", 9:"nine", 10:"ten", 11:"eleven", 12:"twelve",0:"twelve"}
 minutes = {1:"oh one",2:"oh two",3:"oh three",4:"oh four",5:"oh five",10:"ten",11:"eleven",13:"thirteen",14:"fourteen",19:"nineteen",20:"twenty",30:"thirty",29:"twenty nine",39:"thirty nine",49:"forty nine",59:"fifty nine"}
-    # This will convert military hours to regular hours, and determine AM vs PM
+hours = {1:"one", 2:"two", 3:"three", 4:"four", 5:"five", 6:"six",7:"seven", 8:"eight", 9:"nine", 10:"ten", 11:"eleven", 12:"twelve",0:"twelve"}
 class Solution:    
     def ClockTalker(self, input_time):
         if int(input_time.split(":")[0]) < 12:
